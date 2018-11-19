@@ -5,12 +5,58 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:context=".MainActivity"
+    tools:ignore="MissingPrefix">
 
     <Button
         android:id="@+id/btnShow"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="SHOW WEB VIEW!!"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="24sp"
+        android:text="サンプル(Native)"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        android:text="デフォルトフォント"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="これはサンプルです。"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:text="This is a sample."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:textSize="20sp"
+        fontPath="rounded-mplus-1c-regular.ttf"
+        android:text="組み込みフォント"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        fontPath="rounded-mplus-1c-regular.ttf"
+        android:text="これはサンプルです。"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        fontPath="rounded-mplus-1c-regular.ttf"
+        android:text="This is a sample."/>
 
 </LinearLayout>
