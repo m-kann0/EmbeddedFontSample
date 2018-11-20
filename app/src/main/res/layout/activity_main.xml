@@ -7,8 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="8dp"
-    tools:context=".MainActivity"
-    tools:ignore="MissingPrefix">
+    tools:context=".MainActivity">
 
     <Button
         android:id="@+id/btnShow"
@@ -44,19 +43,19 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="20sp"
-        fontPath="rounded-mplus-1c-regular.ttf"
+        android:fontFamily="@font/rounded_mplus_1c_regular"
         android:text="組み込みフォント"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        fontPath="rounded-mplus-1c-regular.ttf"
+        android:fontFamily="@font/rounded_mplus_1c_regular"
         android:text="これはサンプルです。"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        fontPath="rounded-mplus-1c-regular.ttf"
+        android:fontFamily="@font/rounded_mplus_1c_regular"
         android:text="This is a sample."/>
 
 </LinearLayout>
