@@ -3,13 +3,62 @@
 
 <head>
     <title>サンプル</title>
-    <style>
-        @font-face {
-            font-family: 'Rounded M plus';
-            src: url('file:///android_res/font/rounded_mplus_1c_regular.ttf');
-            font-weight: normal;
+    <script type="text/javascript">
+        class Launcher {
+
+            start() {
+                this.postToNative('transferFontData');
+                this.waitFont();
+            }
+
+            postToNative(name, param) {
+                let handler = undefined;
+                if (window !== undefined && window.webkit !== undefined && window.webkit.messageHandlers !== undefined) {
+                    handler = window.webkit.messageHandlers;
+                } else if (typeof Android !== "undefined") {
+                    handler = Android;
+                }
+
+                if (handler !== undefined && handler[name] !== undefined) {
+                    if (handler[name].postMessage !== undefined) {
+                        handler[name].postMessage(param);
+                    } else {
+                        handler[name](param);
+                    }
+                }
+            }
+
+            waitFont() {
+                let fontSet = document.fonts;
+                if (fontSet !== undefined) {
+                    fontSet.load(`20px "Rounded M plus"`);
+                    fontSet.ready.then((fontFaceSet) => {
+                        this.onFontLoaded();
+                    });
+                } else {
+                    this.onFontLoaded();
+                }
+            }
+
+            onFontLoaded() {
+            }
+
         }
-    </style>
+
+        window.setBase64FontData = (base64) => {
+            let style = document.createElement('style');
+            style.appendChild(document.createTextNode(`
+                @font-face {
+                    font-family: 'Rounded M plus';
+                    src: url('data:font/woff2;base64,${base64}');
+                    font-weight: normal;
+                }
+            `));
+            document.head.appendChild(style);
+        };
+
+        new Launcher().start();
+    </script>
 </head>
 
 <body>
