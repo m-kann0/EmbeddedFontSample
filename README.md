@@ -4,7 +4,9 @@
 
 ## ネイティブ
 
-参考：[InflationX/Calligraphy](https://github.com/InflationX/Calligraphy)
+~~参考：[InflationX/Calligraphy](https://github.com/InflationX/Calligraphy)~~
+
+参考：[Fonts in XML  |  Android Developers](https://developer.android.com/guide/topics/ui/look-and-feel/fonts-in-xml)
 
 ## WebView
 
