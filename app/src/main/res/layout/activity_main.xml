@@ -22,20 +22,26 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnReset"
+            android:id="@+id/btnSetLocalUrl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="RESET URL"/>
+            android:text="SET LOCAL URL"/>
 
         <Button
-            android:id="@+id/btnShow"
+            android:id="@+id/btnSetRemoteUrl"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="SHOW WEB VIEW!!"/>
+            android:text="SET REMOTE URL"/>
 
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btnShow"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SHOW WEB VIEW!!"/>
 
     <TextView
         android:layout_width="match_parent"

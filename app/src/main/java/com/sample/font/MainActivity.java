@@ -8,21 +8,27 @@ import android.widget.EditText;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String INITIAL_URL = "file:///android_asset/content.html";
-
-    private EditText editUrl;
+    private static final String LOCAL_CONTENT_URL = "file:///android_asset/content.html";
+    private static final String REMOTE_CONTENT_URL = "https://m-kann0.github.io/EmbeddedFontSample/index.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        editUrl = findViewById(R.id.editUrl);
+        final EditText editUrl = findViewById(R.id.editUrl);
 
-        findViewById(R.id.btnReset).setOnClickListener(new View.OnClickListener() {
+        findViewById(R.id.btnSetLocalUrl).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                resetUrl();
+                editUrl.setText(LOCAL_CONTENT_URL);
+            }
+        });
+
+        findViewById(R.id.btnSetRemoteUrl).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                editUrl.setText(REMOTE_CONTENT_URL);
             }
         });
 
@@ -36,11 +42,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
-        resetUrl();
-    }
-
-    private void resetUrl() {
-        editUrl.setText(INITIAL_URL);
     }
 }
