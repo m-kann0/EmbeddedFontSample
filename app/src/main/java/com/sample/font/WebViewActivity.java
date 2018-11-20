@@ -1,5 +1,6 @@
 package com.sample.font;
 
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -12,6 +13,7 @@ import java.io.InputStreamReader;
 
 public class WebViewActivity extends AppCompatActivity {
 
+    public static final String EXTRA_URL = "com.sample.font.WebViewActivity.URL";
     private WebView webView;
 
     @Override
@@ -19,10 +21,13 @@ public class WebViewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_view);
 
+        Intent intent = getIntent();
+        String url = intent.getStringExtra(EXTRA_URL);
+
         webView = findViewById(R.id.webView);
         webView.getSettings().setJavaScriptEnabled(true);
         webView.addJavascriptInterface(this, "Android");
-        webView.loadUrl("file:///android_asset/content.html");
+        webView.loadUrl(url);
     }
 
     @JavascriptInterface
