@@ -3,12 +3,16 @@
 
 <head>
     <title>サンプル</title>
+    <style>
+        body {
+            background-color: #ccccff;
+        }
+    </style>
     <script type="text/javascript">
         class Launcher {
 
             start() {
                 this.postToNative('transferFontData');
-                this.waitFont();
             }
 
             postToNative(name, param) {
@@ -27,34 +31,27 @@
                     }
                 }
             }
-
-            waitFont() {
-                let fontSet = document.fonts;
-                if (fontSet !== undefined) {
-                    fontSet.load(`20px "Rounded M plus"`);
-                    fontSet.ready.then((fontFaceSet) => {
-                        this.onFontLoaded();
-                    });
-                } else {
-                    this.onFontLoaded();
-                }
-            }
-
-            onFontLoaded() {
-            }
-
         }
 
-        window.setBase64FontData = (base64) => {
-            let style = document.createElement('style');
-            style.appendChild(document.createTextNode(`
-                @font-face {
-                    font-family: 'Rounded M plus';
-                    src: url('data:font/woff2;base64,${base64}');
-                    font-weight: normal;
-                }
-            `));
-            document.head.appendChild(style);
+        window.onload = () => {
+            document.body.style.display = 'none';
+        };
+        window.setBase64FontData = (data) => {
+            var normalBase64 = data['regular'];
+            var normal = new FontFace('Rounded M plus', `url('data:font/woff2;base64,${normalBase64}'`, {weight: 'normal'});
+            var boldBase64 = data['bold'];
+            var bold = new FontFace('Rounded M plus', `url('data:font/woff2;base64,${boldBase64}'`, {weight: 'bold'});
+            Promise.all([normal.load(), bold.load()]).then((values) => {
+                values.forEach((value) => {
+                    document.fonts.add(value);
+                });
+                document.body.style.display = 'block';
+            });
+            //fontFace.load().then((fontFace) => {
+            //    console.log('FONT LOADED!!');
+            //    document.fonts.add(fontFace);
+            //    document.body.style.display = 'block';
+            //});
         };
 
         new Launcher().start();
@@ -71,6 +68,10 @@
     <h3 style="font-family: 'Rounded M plus'">組み込みフォント</h3>
     <p style="font-family: 'Rounded M plus'">これはサンプルです。</p>
     <p style="font-family: 'Rounded M plus'">This is a sample.</p>
+
+    <h3 style="font-family: 'Rounded M plus'; font-weight: bold;">組み込みフォント(bold)</h3>
+    <p style="font-family: 'Rounded M plus'; font-weight: bold;">これはサンプルです。</p>
+    <p style="font-family: 'Rounded M plus'; font-weight: bold;">This is a sample.</p>
 </body>
 
 </html>

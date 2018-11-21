@@ -10,6 +10,8 @@ import android.webkit.WebView;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class WebViewActivity extends AppCompatActivity {
 
@@ -36,9 +38,13 @@ public class WebViewActivity extends AppCompatActivity {
             @Override
             public void run() {
                 try {
-                    String base64 = readAssetString(getAssets(), "rounded-mplus-1c-regular.woff2.base64");
-                    String script = "window.setBase64FontData('" + base64 + "');";
 
+                    String data = "{regular: '" +
+                            readAssetString(getAssets(), "rounded-mplus-1c-regular.woff2.base64") +
+                            "', bold: '" +
+                            readAssetString(getAssets(), "rounded-mplus-1c-black.woff2.base64") +
+                            "'}";
+                    String script = "window.setBase64FontData(" + data + ");";
                     webView.evaluateJavascript(script, null);
                 } catch (IOException e) {
                     throw new IllegalStateException(e);
