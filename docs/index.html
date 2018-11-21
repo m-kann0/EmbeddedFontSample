@@ -3,12 +3,16 @@
 
 <head>
     <title>サンプル</title>
+    <style>
+        body {
+            background-color: #ccffcc;
+        }
+    </style>
     <script type="text/javascript">
         class Launcher {
 
             start() {
                 this.postToNative('transferFontData');
-                this.waitFont();
             }
 
             postToNative(name, param) {
@@ -27,41 +31,22 @@
                     }
                 }
             }
-
-            waitFont() {
-                let fontSet = document.fonts;
-                if (fontSet !== undefined) {
-                    fontSet.load(`20px "Rounded M plus"`);
-                    fontSet.ready.then((fontFaceSet) => {
-                        this.onFontLoaded();
-                    });
-                } else {
-                    this.onFontLoaded();
-                }
-            }
-
-            onFontLoaded() {
-            }
-
         }
 
         window.setBase64FontData = (base64) => {
-            let style = document.createElement('style');
-            style.appendChild(document.createTextNode(`
-                @font-face {
-                    font-family: 'Rounded M plus';
-                    src: url('data:font/woff2;base64,${base64}');
-                    font-weight: normal;
-                }
-            `));
-            document.head.appendChild(style);
+            var fontFace = new FontFace('Rounded M plus', `url('data:font/woff2;base64,${base64}'`);
+            fontFace.load().then(function (fontFace) {
+                console.log('FONT LOADED!!');
+                document.fonts.add(fontFace);
+                document.body.style.display = 'block';
+            });
         };
 
         new Launcher().start();
     </script>
 </head>
 
-<body>
+<body style="display:none;">
     <h2>サンプル(WebView)</h2>
 
     <h3>デフォルトフォント</h3>
