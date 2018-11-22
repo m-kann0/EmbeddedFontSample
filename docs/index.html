@@ -4,17 +4,46 @@
 <head>
     <title>サンプル</title>
     <style>
-        @font-face {
-            font-family: "Rounded M plus";
-            src: url("/rounded_mplus_1c_regular.ttf");
-            font-weight: normal;
-        }
-        @font-face {
-            font-family: "Rounded M plus";
-            src: url("/rounded_mplus_1c_black.ttf");
-            font-weight: bold;
+        body {
+            background-color: #ccffcc;
         }
     </style>
+    <script type="text/javascript">
+        class Launcher {
+
+            start() {
+                this.postToNative('transferFontData');
+            }
+
+            postToNative(name, param) {
+                let handler = undefined;
+                if (window !== undefined && window.webkit !== undefined && window.webkit.messageHandlers !== undefined) {
+                    handler = window.webkit.messageHandlers;
+                } else if (typeof Android !== "undefined") {
+                    handler = Android;
+                }
+
+                if (handler !== undefined && handler[name] !== undefined) {
+                    if (handler[name].postMessage !== undefined) {
+                        handler[name].postMessage(param);
+                    } else {
+                        handler[name](param);
+                    }
+                }
+            }
+        }
+
+        window.setBase64FontData = (base64) => {
+            var fontFace = new FontFace('Rounded M plus', `url('data:font/woff2;base64,${base64}'`);
+            fontFace.load().then(function (fontFace) {
+                console.log('FONT LOADED!!');
+                document.fonts.add(fontFace);
+                document.body.style.display = 'block';
+            });
+        };
+
+        new Launcher().start();
+    </script>
 </head>
 
 <body style="display:none;">
@@ -27,10 +56,6 @@
     <h3 style="font-family: 'Rounded M plus'">組み込みフォント</h3>
     <p style="font-family: 'Rounded M plus'">これはサンプルです。</p>
     <p style="font-family: 'Rounded M plus'">This is a sample.</p>
-
-    <h3 style="font-family: 'Rounded M plus'; font-weight: bold;">組み込みフォント</h3>
-    <p style="font-family: 'Rounded M plus'; font-weight: bold;">これはサンプルです。</p>
-    <p style="font-family: 'Rounded M plus'; font-weight: bold;">This is a sample.</p>
 </body>
 
 </html>
