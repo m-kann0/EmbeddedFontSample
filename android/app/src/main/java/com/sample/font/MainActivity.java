@@ -9,7 +9,7 @@ import android.widget.EditText;
 public class MainActivity extends AppCompatActivity {
 
     private static final String LOCAL_CONTENT_URL = "file:///android_asset/content.html";
-    private static final String REMOTE_CONTENT_URL = "https://m-kann0.github.io/EmbeddedFontSample/index.html";
+    private static final String REMOTE_CONTENT_URL = "https://m-kann0.github.io/EmbeddedFontSample/sample2.html";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
