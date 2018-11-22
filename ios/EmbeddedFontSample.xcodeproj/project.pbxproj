@@ -14,6 +14,7 @@
 		58FBE39421A703A700C51850 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 58FBE39221A703A700C51850 /* LaunchScreen.storyboard */; };
 		58FBE39F21A703A700C51850 /* EmbeddedFontSampleTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBE39E21A703A700C51850 /* EmbeddedFontSampleTests.swift */; };
 		58FBE3AA21A703A700C51850 /* EmbeddedFontSampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBE3A921A703A700C51850 /* EmbeddedFontSampleUITests.swift */; };
+		58FBE3B821A70BFA00C51850 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58FBE3B721A70BFA00C51850 /* WebViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		58FBE3A521A703A700C51850 /* EmbeddedFontSampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EmbeddedFontSampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		58FBE3A921A703A700C51850 /* EmbeddedFontSampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbeddedFontSampleUITests.swift; sourceTree = "<group>"; };
 		58FBE3AB21A703A700C51850 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58FBE3B721A70BFA00C51850 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				58FBE38921A703A500C51850 /* AppDelegate.swift */,
 				58FBE38B21A703A500C51850 /* ViewController.swift */,
 				58FBE38D21A703A500C51850 /* Main.storyboard */,
+				58FBE3B721A70BFA00C51850 /* WebViewController.swift */,
 				58FBE39021A703A700C51850 /* Assets.xcassets */,
 				58FBE39221A703A700C51850 /* LaunchScreen.storyboard */,
 				58FBE39521A703A700C51850 /* Info.plist */,
@@ -257,6 +260,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				58FBE38C21A703A500C51850 /* ViewController.swift in Sources */,
+				58FBE3B821A70BFA00C51850 /* WebViewController.swift in Sources */,
 				58FBE38A21A703A500C51850 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

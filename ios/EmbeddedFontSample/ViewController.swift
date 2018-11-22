@@ -2,19 +2,25 @@
 //  ViewController.swift
 //  EmbeddedFontSample
 //
-//  Created by Masato Kanno on 2018/11/23.
-//  Copyright © 2018 Masato Kanno. All rights reserved.
-//
 
 import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var textUrl: UITextField!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+
+        textUrl.text = "https://m-kann0.github.io/EmbeddedFontSample/sample2.html"
     }
-
-
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "moveToWebView" else {
+            return
+        }
+        
+        let dest = segue.destination as! WebViewController
+        dest.url = textUrl.text
+    }
 }
-
